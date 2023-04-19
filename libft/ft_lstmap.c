@@ -1,22 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: antonio <antonio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/18 15:23:17 by aclaros-          #+#    #+#             */
-/*   Updated: 2023/04/19 16:54:56 by antonio          ###   ########.fr       */
+/*   Created: 2022/10/22 10:57:35 by aclaros-          #+#    #+#             */
+/*   Updated: 2023/03/27 14:49:59 by antonio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"libft.h"
 
-void	ft_putstr_fd(char *s, int fd)
+t_list	*ft_lstmap(t_list *lst, int (*f)(int), void (*del)(int))
 {
-	int	i;
+	t_list	*sol;
+	t_list	*tmp;
 
-	i = 0;
-	while (s[i])
-		ft_putchar_fd(s[i++], fd);
+	if (!lst || !f)
+		return (NULL);
+	sol = NULL;
+	while (lst)
+	{
+		tmp = ft_lstnew(f(lst->content));
+		if (!tmp)
+		{
+			ft_lstclear(&sol, del);
+			return (NULL);
+		}
+		ft_lstadd_back(&sol, tmp);
+		lst = lst->next;
+	}
+	return (sol);
 }

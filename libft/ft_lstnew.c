@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aclaros- <aclaros-@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: aclaros- <aclaros-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/15 13:45:03 by aclaros-          #+#    #+#             */
-/*   Updated: 2022/11/15 13:45:07 by aclaros-         ###   ########.fr       */
+/*   Created: 2022/10/18 16:22:53 by aclaros-          #+#    #+#             */
+/*   Updated: 2023/03/11 11:56:21 by aclaros-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"ft_printf.h"
+#include	"libft.h"
 
-int	ft_putstr_fd(char *s, int fd)
+t_list	*ft_lstnew(int content)
 {
-	int	i;
+	t_list	*new;
 
-	i = 0;
-	if (s == NULL)
-		s = "(null)";
-	while (s[i])
-		ft_putchar_fd(s[i++], fd);
-	return (i);
+	new = (t_list *)malloc(sizeof(t_list));
+	if (!new)
+		return (NULL);
+	new ->content = content;
+	new ->index = -1;
+	new ->next = NULL;
+	return (new);
 }

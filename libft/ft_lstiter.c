@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aclaros- <aclaros-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/03 12:47:30 by aclaros-          #+#    #+#             */
-/*   Updated: 2022/11/15 13:02:55 by aclaros-         ###   ########.fr       */
+/*   Created: 2022/10/21 12:01:41 by aclaros-          #+#    #+#             */
+/*   Updated: 2023/03/18 08:56:29 by aclaros-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include	"libft.h"
 
-# include <unistd.h>
-# include <stdarg.h>
-
-int		ft_putchar_fd(char c, int fd);
-int		ft_putnbr_fd(char a, long int n, int fd, int count);
-int		ft_putstr_fd(char *s, int fd);
-int		ft_putstr_fp(char *s, int count);
-int		ft_printf(char const *a, ...);
-int		ft_putnbr_base(char a, unsigned int nbr, int count);
-
-#endif
+void	ft_lstiter(t_list *lst, void (*f)(int))
+{
+	if (!lst || !f)
+		return ;
+	while (lst)
+	{
+		f(lst->content);
+		lst = lst->next;
+	}
+}

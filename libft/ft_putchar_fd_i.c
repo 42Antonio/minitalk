@@ -1,35 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
+/*   ft_putchar_fd_i.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: antonio <antonio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/22 10:57:35 by aclaros-          #+#    #+#             */
-/*   Updated: 2022/10/26 12:17:27 by antonio          ###   ########.fr       */
+/*   Created: 2022/11/03 12:47:16 by aclaros-          #+#    #+#             */
+/*   Updated: 2023/04/19 18:21:04 by antonio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"libft.h"
 
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+int	ft_putchar_fd_i(char c, int fd)
 {
-	t_list	*sol;
-	t_list	*tmp;
-
-	if (!lst || !f)
-		return (NULL);
-	sol = NULL;
-	while (lst)
-	{
-		tmp = ft_lstnew(f(lst->content));
-		if (!tmp)
-		{
-			ft_lstclear(&sol, del);
-			return (NULL);
-		}
-		ft_lstadd_back(&sol, tmp);
-		lst = lst->next;
-	}
-	return (sol);
+	if (write(fd, &c, 1) != 1)
+		return (-1);
+	return (1);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aclaros- <aclaros-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: antonio <antonio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 17:07:31 by aclaros-          #+#    #+#             */
-/*   Updated: 2022/10/27 10:27:00 by aclaros-         ###   ########.fr       */
+/*   Updated: 2023/04/19 17:22:00 by antonio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,17 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+# include <stdarg.h>
 
 typedef struct s_list
 {
-	void			*content;
+	int				content;
+	int				index;
 	struct s_list	*next;
 }					t_list;
 
 int		ft_atoi(const char *str);
+long	atoli(const char *str);
 void	*ft_calloc(size_t count, size_t size);
 void	ft_bzero(void *b, size_t n);
 void	*ft_memchr(const void *str, int c, size_t n);
@@ -38,12 +41,12 @@ int		ft_isprint(int c);
 char	*ft_itoa(int n);
 void	ft_lstadd_front(t_list **lst, t_list *new);
 void	ft_lstadd_back(t_list **lst, t_list *new);
-void	ft_lstclear(t_list **lst, void (*del)(void *));
-void	ft_lstdelone(t_list *lst, void (*del)(void *));
-void	ft_lstiter(t_list *lst, void (*f)(void *));
+void	ft_lstclear(t_list **lst, void (*del)(int));
+void	ft_lstdelone(t_list *lst, void (*del)(int));
+void	ft_lstiter(t_list *lst, void (*f)(int));
 t_list	*ft_lstlast(t_list *lst);
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
-t_list	*ft_lstnew(void *content);
+t_list	*ft_lstmap(t_list *lst, int (*f)(int), void (*del)(int));
+t_list	*ft_lstnew(int content);
 int		ft_lstsize(t_list *lst);
 void	ft_putchar_fd(char c, int fd);
 void	ft_putendl_fd(char *s, int fd);
@@ -65,5 +68,11 @@ char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strtrim(char const *s1, char const *set);
 int		ft_tolower(int c);
 int		ft_toupper(int c);
+int		ft_putchar_fd_i(char c, int fd);
+int		ft_putnbr_fd_i(char a, long int n, int fd, int count);
+int		ft_putstr_fd_i(char *s, int fd);
+int		ft_putstr_fp(char *s, int count);
+int		ft_printf(char const *a, ...);
+int		ft_putnbr_base(char a, unsigned int nbr, int count);
 
 #endif

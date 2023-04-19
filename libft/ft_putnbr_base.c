@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aclaros- <aclaros-@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: antonio <antonio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 13:06:04 by aclaros-          #+#    #+#             */
-/*   Updated: 2022/11/15 13:20:18 by aclaros-         ###   ########.fr       */
+/*   Updated: 2023/04/19 17:17:19 by antonio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"ft_printf.h"
+#include	"libft.h"
 
 static void	ft_putchar(char c)
 {
