@@ -9,6 +9,8 @@ OBJ_BONUS=$(SRC_BONUS:.c=.o)
 
 all: $(NAME)
 
+bonus: server_bonus client_bonus
+
 server : server.o 
 
 	@make -C libft/ all
@@ -35,10 +37,12 @@ server_bonus : server_bonus.o
 
 clean:
 	@make -C libft/ clean
-	rm -f $(OBJ)
+	rm -f $(OBJ) $(OBJ_BONUS)
 
 fclean: clean
-	rm -f $(NAME)
+	rm -f $(NAME) server_bonus client_bonus
 	@make -C libft/ fclean
 
 re: fclean all
+
+.PHONY: all bonus libft clean fclean re
