@@ -17,7 +17,8 @@ void	ft_unbit(int signal, siginfo_t	*pid, void *context)
 	if (bit == 8)
 	{
 		ft_printf("%c",i);
-		kill (pid -> si_pid, SIGUSR2);
+		if (i == 0)
+			kill (pid -> si_pid, SIGUSR2);
 		bit = 0;
 		i = 0;
 	}	
@@ -37,6 +38,8 @@ int	main(int ac, char	**av)
 	pid = getpid();
 	ft_printf("Server PID: %d\n", pid);
 	siga.sa_sigaction = ft_unbit;
+	//sigemptyset(&siga.sa_mask);
+	//siga.sa_flags = 0;
 
 	while(1)
 	{	
