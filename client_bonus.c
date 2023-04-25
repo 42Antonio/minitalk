@@ -1,8 +1,7 @@
 #include	"include/minitalk_bonus.h"
 
-static void	received(int	signal)
+static void	received(int signal)
 {
-	
 	if (signal == SIGUSR2)
 	{
 		printf("\nMessage received");
@@ -10,7 +9,7 @@ static void	received(int	signal)
 	}
 }
 
-static void	client_str(int	pid, char	c)
+static void	client_str(int pid, char c)
 {
 	int		bit;
 
@@ -24,14 +23,16 @@ static void	client_str(int	pid, char	c)
 		usleep(100);
 	}
 }
+
 int	main(int ac, char	**av)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (ac == 3)
 	{	
-		while(av[2][i] != '\0'){
+		while (av[2][i] != '\0')
+		{
 			client_str(ft_atoi(av[1]), av[2][i]);
 			i++;
 		}

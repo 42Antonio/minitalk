@@ -1,13 +1,13 @@
 #include	"include/minitalk.h"
 
-static void	client_str(int	pid, char	*str)
+static void	client_str(int pid, char *str)
 {
 	int		bit;
 	char	c;
 	int		i;
 
 	i = 0;
-	while(str[i])
+	while (str[i])
 	{
 		bit = 8;
 		c = str[i];
@@ -22,6 +22,7 @@ static void	client_str(int	pid, char	*str)
 		i++;
 	}
 }
+
 int	main(int ac, char	**av)
 {
 	if (ac == 3)
